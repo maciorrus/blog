@@ -1,3 +1,7 @@
+cheaster_auth:
+    resource: "@CheasterAuthBundle/Controller"
+    type: annotation
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
