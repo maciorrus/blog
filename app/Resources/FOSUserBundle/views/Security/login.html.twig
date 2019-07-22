@@ -1,0 +1,28 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <h3>You are already logged in!</h3>
+        <a href="{{ path('fos_user_security_logout') }}">
+            Log out
+        </a>
+    {% else %}
+
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        {{ include('@FOSUser/Security/login_content.html.twig') }}
+    {% endif %}
+{% endblock fos_user_content %}
+
+
+{% block stylesheets %}
+
+{% endblock %}
