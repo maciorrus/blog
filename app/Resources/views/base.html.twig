@@ -20,29 +20,20 @@
   .fas{
     margin-right: 10px;
   }
+  .far{
+    margin-right: 10px;
+  }
   </style>
 </head>
 <body>
   <header class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" href="/">Cheaster</a>
+    <a class="navbar-brand" href="{{ path('home')}}">Cheaster</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="nav navbar-nav mr-md-auto">
-      <li class="nav-item">
-        <a class="nav-link " href="/" style="display: block; text-align: center; "><i class="fas fa-home"></i><span class="menu-text">Hossme</span></a>
-      </li>
-    </ul>
-
-    <ul class="navbar-nav ml-md-auto">
-      <li class="nav-item">
-        <a class="nav-link " href="/"><i class="fas fa-user"></i>Login</a>
-      </li>
-    </ul>
-
-  <ul class="navbar-nav">
+{% if app.user %}
+  <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown">
       <a class="nav-item nav-link dropdown-toggle mr-md-2" href="/" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Maciej Michalak
@@ -56,6 +47,23 @@
       </div>
     </li>
   </ul>
+{% else %}
+<div class="collapse navbar-collapse" id="collapsibleNavbar">
+  <ul class="nav navbar-nav mr-md-auto">
+    <li class="nav-item">
+      <a class="nav-link " href="{{ path('home') }}" style="display: block; text-align: center; "><i class="fas fa-home"></i><span class="menu-text">Home</span></a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav ml-md-auto">
+    <li class="nav-item">
+      <a class="nav-link " href="{{ path('fos_user_security_login') }}"><i class="fas fa-user"></i>Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="{{ path('fos_user_registration_register') }}"><i class="far fa-newspaper"></i>Sign up</a>
+    </li>
+  </ul>
+{% endif %}
   </div>
 </header>
 
