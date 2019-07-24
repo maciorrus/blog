@@ -3,8 +3,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    {% if targetUrl %}
-    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-    {% endif %}
+  <h3>Dziekuję za rejestrację.</h3>
+  <p>Możesz przejść teraz do strony głównej i komentować posty.
 {% endblock fos_user_content %}
